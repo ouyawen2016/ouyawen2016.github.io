@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GUI编程</title>
+</head>
+<body>
+<div id="wmd-preview" class="wmd-preview"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="bc7x" id="gui编程">GUI编程</h1><p data-anchor-id="gtg1"><code>Java</code></p><p data-anchor-id="1gaa">---这里是不负责的抄源码反推系列之main frame <br>
+就算你时间不宝贵，你也走点心啊亲爱的我 <br>
+3个小时都没搞完，你想干嘛</p><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="t287"><ol class="linenums"><li class="L0"><code class="language-java"><span class="pln">    </span><span class="kwd">package</span><span class="pln"> frame</span><span class="pun">;</span></code></li><li class="L1"><code class="language-java"><span class="pln">    </span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.*;</span></code></li><li class="L2"><code class="language-java"><span class="pln">    </span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">awt</span><span class="pun">.</span><span class="pln">event</span><span class="pun">.*;</span></code></li><li class="L3"><code class="language-java"><span class="pln">    </span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">swing</span><span class="pun">.*;</span></code></li></ol></pre><p data-anchor-id="tfpf">分包，继承awt，swing类 <br>
+   不可以只写第二行（不知道为什么</p><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="uszh"><ol class="linenums"><li class="L0"><code class="language-java"><span class="pln">    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MainFrame</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">JFrame</span><span class="pun">{</span></code></li></ol></pre><p data-anchor-id="4fl3">这份源码用的是JFrame <br>
+frame与JFrame的区别是: <br>
+    1.frame是awt的子类,JFrame是swing的子类，swing作为一种轻量级组件，独立于本地平台，所以有更强的可移植性，AWT比较吃藕，swing默认了一种LAF(look and feel),比较好看 <br>
+    2.关闭方法不同 <br>
+    frame加监听，使得关闭有效</p><pre data-anchor-id="n3l7"><code>this.addWindowListener(new&nbsp;WindowAdapter(){&nbsp;&nbsp;
+public&nbsp;void&nbsp;windowClosing(WindowEvent&nbsp;e){&nbsp;&nbsp;
+System.exit(0);&nbsp;&nbsp;
+};
+</code></pre><p data-anchor-id="3gkn">Jframe传入参数使得关闭有效</p><pre data-anchor-id="h4y1"><code>this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+</code></pre><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="uti4"><ol class="linenums"><li class="L0"><code class="language-java"><span class="pln">    </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> serialVersionUID </span><span class="pun">=</span><span class="pln"> </span><span class="lit">1L</span><span class="pun">;</span></code></li></ol></pre><p data-anchor-id="sjmm">“版本升级后，反序列化仍然保持对象的唯一性”，就是向后兼容</p><pre data-anchor-id="kb9e"><code>JFrame mainFrame = new JFrame("员工信息管理系统");
+//""里是窗口名字
+JPanel p = new JPanel();//创造一个中间容器
+frame与panel的嵌套可以实现很复杂的按钮布局
+JLabel label = new JLabel("欢迎使用企业部门员工信息管理系统");
+JLabel label2 = new JLabel("copy@oven topview一轮考核作业 ");
+//在页面里写上标签
+JMenuBar jmb = new JMenuBar();
+//最大菜单栏
+JMenu jm1 = new JMenu();
+JMenu jm2 = new JMenu();
+JMenu jm3 = new JMenu();
+JMenu jm4 = new JMenu();
+JMenu jm5 = new JMenu();
+//各个小的下拉
+JMenuItem jmi = new JMenuItem();
+JMenuItem jmi1 = new JMenuItem();
+JMenuItem jmi2 = new JMenuItem();
+JMenuItem jmi3 = new JMenuItem();
+JMenuItem jmi4 = new JMenuItem();
+JMenuItem jmi5 = new JMenuItem();
+JMenuItem jmi6 = new JMenuItem();
+JMenuItem jmi7 = new JMenuItem();
+JMenuItem jmi8 = new JMenuItem();
+JMenuItem jmi9 = new JMenuItem();
+JMenuItem jmi10 = new JMenuItem();
+JMenuItem jmi11 = new JMenuItem();
+/**
+ * @param args
+ */
+private void init(){
+    //设置mainFrame的panel，关闭方式，大小
+    mainFrame.add(p,BorderLayout.CENTER);
+    //禁用了关闭按钮，只能从菜单栏中退出
+    mainFrame.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+</code></pre><p data-anchor-id="8dc0">Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); <br>
+        mainFrame.setSize(screenSize.width,screenSize.height-40); <br>
+    //获取显示器大小并适配 <br>
+        //设置panel的Layout <br>
+        p.setLayout(new BorderLayout());</p><pre data-anchor-id="n49x"><code>    //将标签初始化，将其加入到panel中
+    label.setFont(new java.awt.Font("华文新魏",Font.BOLD,50));
+    label.setHorizontalAlignment(SwingConstants.CENTER);
+    label.setForeground(new Color(50,73,55));
+
+    label2.setFont(new java.awt.Font("宋体",Font.BOLD,20));
+    label2.setHorizontalAlignment(SwingConstants.CENTER);
+    label2.setForeground(new Color(50,73,55));
+    p.add(label, BorderLayout.CENTER);
+    p.add(label2, BorderLayout.SOUTH);
+
+    //向窗体中添加菜单文字,并向菜单项添加事件监听程序
+    jm4.setText("部门管理");
+    jmi6.setText("部门信息查询与管理");
+    jmi6.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //DeptInfo di =new DeptInfo();
+        }
+    });
+    jm4.add(jmi6);
+
+    jm1.setText("信息查询");
+    jmi.setText("查询全部员工信息");
+    jmi.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //QueryAllEmployee qae = new QueryAllEmployee();
+        }
+    });
+    jmi1.setText("条件查询");
+    jmi1.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //QueryCondition qc = new QueryCondition();
+        }
+    });
+    jm1.add(jmi);
+    jm1.add(jmi1);
+    jm2.setText("员工信息操作");
+    jmi7.setText("添加员工信息");
+    jmi2.setText("修改员工信息");
+    jmi3.setText("删除员工信息");
+    jm2.add(jmi7);
+    jm2.add(jmi2);
+    jm2.add(jmi3);
+    jmi2.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //UpdateEmpInfo uei = new UpdateEmpInfo();
+        }
+    });
+    jmi3.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //DeleteEmployee de = new DeleteEmployee();
+        }
+    });
+    jmi7.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //AddEmployee ae = new AddEmployee();
+        }
+    });
+    jm5.setText("基本信息管理");
+    jmi8.setText("学历添加");
+    jmi8.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //BasicInfoAdd bif = new BasicInfoAdd();
+        }
+    });
+    jmi9.setText("职务添加");
+    jmi9.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //AddDuty ad = new AddDuty();
+        }
+    });
+    jmi10.setText("职称添加");
+    jmi10.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //AddSpecialDuty asd = new AddSpecialDuty();
+        }
+    });
+    jmi11.setText("岗位添加");
+    jmi11.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //AddStation as= new AddStation();
+        }
+    });
+    jm5.add(jmi8);
+    jm5.add(jmi9);
+    jm5.add(jmi10);
+    jm5.add(jmi11);
+
+    jm3.setText("系统");
+    jmi5.setText("有关本系统");
+    jmi4.setText("退出系统");
+    jm3.add(jmi5);
+    jm3.add(jmi4);
+    jmi4.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            int result = JOptionPane.showConfirmDialog(mainFrame, "您确定离开本系统吗？", "温馨提示", JOptionPane.OK_CANCEL_OPTION);
+            if(result==JOptionPane.OK_OPTION){
+                System.exit(0);
+            }else{
+
+            }
+        }
+    });
+    jmi5.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+            //About a = new About();
+        }
+    });
+    jmb.add(jm4);
+    jmb.add(jm1);
+    jmb.add(jm2);
+    jmb.add(jm5);
+    jmb.add(jm3);
+
+
+    mainFrame.setJMenuBar(jmb);
+
+
+    mainFrame.setVisible(true);//能不能被看见
+}
+public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    MainFrame mf = new MainFrame();
+    mf.init();
+
+}
+</code></pre><p data-anchor-id="6rll">} <br>
+```</p></div>
+</body>
+</html>
