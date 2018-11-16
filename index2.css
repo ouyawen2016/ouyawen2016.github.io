@@ -1,0 +1,38 @@
+/*
+* @Author: Marte
+* @Date:   2018-11-14 11:07:01
+* @Last Modified by:   Marte
+* @Last Modified time: 2018-11-14 14:41:20
+*/
+
+body{
+   margin:0 auto;
+    height:100%;
+}
+#content{
+    text-align:center;
+}
+.news-title{
+    font-weight:lighter;
+}
+.imagesList{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+.imagesList a{
+    border:1px solid #ccc;
+}
+.img_link{
+    width:40%;
+    margin-right:5%;
+    margin-top:30px;
+}
+.footer-email{
+    font-weight:lighter;
+    font-size: 14px;
+}
+.footer{
+    display:absolute;
+    bottom:0;
+}
