@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>实验4</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--引用jQuery Mobile函数库-->
+<link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
+<link rel="stylesheet" href="index2.css" />
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.4.0.min.js"></script>
+<!--最佳化屏幕宽度-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>、
+
+<body>
+	<!--第一页-->
+	<div data-role="page" data-title="第一页" id="first">
+		<div data-role="header">
+			<h1 class="news-title">广工新闻</h1>
+		</div>
+		<div data-role="content" id="content">
+			<div id="imagesList">
+				<a href="https://news.qq.com/"><img class="img_link" src="img/tengxunxinwen.jpg"></a>
+				<a href="https://www.toutiao.com/"><img class="img_link" src="img/jinritoutiao.jpg"></a>
+                <a href="http://jsjxy.gdut.edu.cn/"><img class="img_link" src="img/jisuanji.jpg"></a>
+                <a href="https://www.jd.com/?cu=true&utm_source=baidu-search&utm_medium=cpc&utm_campaign=t_262767352_baidusearch&utm_term=27669656391_0_34eac578affa4ebb8d3fc89320c4fcb2"><img class="img_link" src="img/jingdong.jpg"></a>
+			</div>
+		</div>
+		<div data-role="footer" class="footer">
+			<h4 class="footer-email">email@952593688.qq.com</h4>
+		</div>
+		</div>
+
+
+	<!--第二页-->
+	<div data-role="page" data-title="第二页" id="second">
+		<div data-role="header">
+			<a data-rel="back">回上页</a>
+			<h1>第二页</h1>
+		</div>
+		<div data-role="content" id="content">
+			<a href="#first">返回第一页</a>
+		</div>
+		<div data-role="footer">
+			<h4 class="footer-email">email@952593688.qq.com</h4>
+		</div>
+	</div>
+</body>
+
+<script src="index2.js"></script>
+</html>
