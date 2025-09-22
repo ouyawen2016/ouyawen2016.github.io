@@ -102,9 +102,4 @@ service-worker: true
 
 
 # Friends
-friends: [
-    {
-        title: "Evan的博客",
-        href: "https://yZhiHao.github.io/"
-    }
-]
+friends: []
