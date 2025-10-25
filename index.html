@@ -1,42 +1,277 @@
----
-layout: page
-description: "你要拼尽全力，才有资格站在光明里"
----
-{% for post in paginator.posts %}
-<div class="post-preview">
-                   
-<a href="{{ post.url | prepend: site.baseurl }}">
-     <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:200 }}
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi, I'm Yawen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+    <!-- 粘性导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-shape"></div>
+                <span>YAWEN OU</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#about" class="nav-link active">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#work" class="nav-link">WORK</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#passion" class="nav-link">PASSION</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#video" class="nav-link">VIDEO</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">CONTACT</a>
+                </li>
+            </ul>
         </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
-</div>
-<hr>
-{% endfor %}
+    </nav>
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+    <!-- 首页部分 -->
+    <section id="home" class="section hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">HI, I'M YAWEN</h1>
+            <p class="hero-subtitle fade-in">Mobile & Web Developer </p>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToAbout()">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 关于我部分 -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-text">
+                        <p>I am a graduate student in Information Management at the University of Illinois, specializing in mobile and front-end development. With four years of Android experience, I am proficient in Kotlin, Java, and modern web technologies.</p>
+                        <p>I am passionate about exploring the intersection of human-computer interaction and intelligent applications. My goal is to improve user experiences through innovation, and I see programming as a way to bring ideas into reality.</p>
+                    </div>
+                    
+                </div>
+                <div class="about-image">
+                    <img src="assets/icard_photo.JPG" alt="个人照片" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作项目部分 -->
+    <section id="work" class="section work-section">
+        <div class="container">
+            <h2 class="section-title">WORK</h2>
+            <div class="carousel-container">
+                <div class="carousel" id="carousel">
+                    <div class="carousel-slide active">
+                        <div class="project-card" onclick="openModal('workModal1')">
+                            <div class="project-image">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3>Frontend Development Intern</h3>
+                            <p class="company-info">Beijing Sankuai Online Technology Co., Ltd. (Meituan)</p>
+                            <p class="duration">May 2025 – Aug 2025</p>
+                            <div class="click-hint">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Click to view details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="project-card" onclick="openModal('workModal2')">
+                            <div class="project-image">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Senior Engineer</h3>
+                            <p class="company-info">BIGO Technology Pte. Ltd.</p>
+                            <p class="duration">Jul 2020 – Aug 2024</p>
+                            <div class="click-hint">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Click to view details</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="project-card" onclick="openModal('workModal3')">
+                            <div class="project-image">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Intern, Android Development</h3>
+                            <p class="company-info">Shenzhen Tencent Computer System Co., Ltd.</p>
+                            <p class="duration">Jun 2019 – Aug 2019</p>
+                            <div class="click-hint">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Click to view details</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                    <span class="indicator active" data-slide="0"></span>
+                    <span class="indicator" data-slide="1"></span>
+                    <span class="indicator" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 个人项目部分 -->
+    <section id="passion" class="section passion-section">
+        <div class="container">
+            <h2 class="section-title">PASSION</h2>
+            <div class="passion-projects">
+                <div class="passion-item">
+                    <div class="passion-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Multimodal Music Interaction System</h3>
+                    <p>Developed a real-time audio visualization system with custom Compose component supporting 60fps rendering. Designed haptic feedback engine mapping audio frequencies to 9 vibration parameters, enhancing accessibility.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Compose</span>
+                        <span class="tech-tag">Coroutines</span>
+                    </div>
+                </div>
+                
+                <div class="passion-item">
+                    <div class="passion-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Smart Migraine Analysis Tool</h3>
+                    <p>Built an AI-powered migraine tracking app integrating Android AlarmManager for intelligent reminders. Utilized ML Kit Speech Recognition to convert speech into structured logs, decreasing manual input by 70%.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">ML Kit</span>
+                        <span class="tech-tag">Room Database</span>
+                        <span class="tech-tag">MPAndroidChart</span>
+                    </div>
+                </div>
+                
+                <div class="passion-item">
+                    <div class="passion-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Full-Stack E-commerce Platform</h3>
+                    <p>Developed a comprehensive e-commerce solution with React frontend and Node.js backend. Implemented real-time inventory management, payment processing, and advanced analytics dashboard with multi-column responsive layout.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Stripe API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 联系方式部分 -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-icons">
+                <a href="https://instagram.com/yawenou2016" target="_blank" class="contact-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://github.com/ouyawen2016" target="_blank" class="contact-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:ouyawen2017@gmail.com" class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Yawen Ou</p>
+        </div>
+    </footer>
+
+    <!-- 工作经历模态框 -->
+    <div id="workModal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('workModal1')">&times;</span>
+            <h2>Frontend Development Intern</h2>
+            <div class="modal-body">
+                <div class="work-header">
+                    <h3>Beijing Sankuai Online Technology Co., Ltd. (Meituan)</h3>
+                    <p class="work-duration">May 2025 – Aug 2025</p>
+                </div>
+                <div class="work-description">
+                    <h4>Key Responsibilities & Achievements:</h4>
+                    <ul>
+                        <li><strong>MRN Framework Development:</strong> Developed local-feature Tabs and Cards independently using React Native for Meituan framework, contributing to the Scenic Tickets Team's core functionality.</li>
+                        <li><strong>Hotel Platform Optimization:</strong> Contributed to hotel filtering and shelf optimization requirements, improving user experience and platform efficiency.</li>
+                        <li><strong>Mini-program Issues Resolution:</strong> Resolved mini-program domain and image truncation issues to ensure stable releases and seamless user experience.</li>
+                        <li><strong>Android App Refactoring:</strong> Refactored Android manual update feature for merchant app and led Q3 crash governance, successfully reducing app crash rate by 10%.</li>
+                        <li><strong>LLM & NoCode Integration:</strong> Utilized internal LLM and NoCode platforms to build weekly review scoring tools and a knowledge base system, creating automated SOPs and technical documentation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="workModal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('workModal2')">&times;</span>
+            <h2>Senior Engineer</h2>
+            <div class="modal-body">
+                <div class="work-header">
+                    <h3>BIGO Technology Pte. Ltd.</h3>
+                    <p class="work-duration">Jul 2020 – Aug 2024</p>
+                </div>
+                <div class="work-description">
+                    <h4>Key Responsibilities & Achievements:</h4>
+                    <ul>
+                        <li><strong>Live Streaming Revenue Development:</strong> Led core business development for live streaming monetization, driving significant revenue growth for the platform.</li>
+                        <li><strong>Architecture Refactoring & UI Componentization:</strong> Modularized core business logic, optimizing family homepage loading and reducing startup time by 40% (1.5s → 0.9s). Developed reusable UI components (bubbles, buttons), improving development efficiency and code reusability.</li>
+                        <li><strong>IM Module Enhancements:</strong> Implemented global message search with keyword-based and fuzzy search. Adapted six new message types (gifts, profile pages, sharing, etc.), standardized message interface, and optimized conversation list scrolling performance.</li>
+                        <li><strong>Share Module Refactoring:</strong> Migrated architecture from MVP to MVVM, standardizing sharing interface for external platforms (WhatsApp, Facebook, Instagram) and internal features (live rooms, IM).</li>
+                        <li><strong>Engineering Efficiency – Color Token System:</strong> Collaborated with design team to standardize color token management, reducing manual maintenance effort by 90%. Led a 20-person team in migrating Figma design assets, unifying component libraries, and creating component usage documentation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="workModal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('workModal3')">&times;</span>
+            <h2>Intern, Android Development</h2>
+            <div class="modal-body">
+                <div class="work-header">
+                    <h3>Shenzhen Tencent Computer System Co., Ltd.</h3>
+                    <p class="work-duration">Jun 2019 – Aug 2019</p>
+                </div>
+                <div class="work-description">
+                    <h4>Key Responsibilities & Achievements:</h4>
+                    <ul>
+                        <li><strong>JOOX App Development & Iterations:</strong> Contributed to feature development, bug fixes, and debugging tools for the music streaming application.</li>
+                        <li><strong>Network Monitoring Tool:</strong> Integrated logging in the CGI network layer to intercept and analyze real-time request/response data. Built a floating window UI for real-time visualization, significantly improving debugging efficiency.</li>
+                        <li><strong>Memory Analysis Tool:</strong> Hooked into Bitmap creation/release and analyzed ImageView usage across screens to track memory consumption. Integrated with Memory Profiler for deep monitoring and precise memory leak detection, reducing OOM risks.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,111 @@
+---
+layout: page
+title: "Blog"
+description: "技术分享与成长记录"
+header-img: "img/home-bg.jpg"
+---
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+            <h1 class="page-title">我的博客</h1>
+            <p class="page-subtitle">分享技术心得，记录成长轨迹</p>
+            
+            {% for post in site.posts %}
+            <div class="post-preview">
+                <a href="{{ post.url | prepend: site.baseurl }}">
+                    <h2 class="post-title">
+                        {{ post.title }}
+                    </h2>
+                    {% if post.subtitle %}
+                    <h3 class="post-subtitle">
+                        {{ post.subtitle }}
+                    </h3>
+                    {% endif %}
+                    <div class="post-content-preview">
+                        {{ post.content | strip_html | truncate:200 }}
+                    </div>
+                </a>
+                <p class="post-meta">
+                    Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+                </p>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.post-preview {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-preview:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.post-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.post-subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.post-content-preview {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.post-meta {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.post-preview a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-preview a:hover {
+    text-decoration: none;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 2rem 0;
+}
+</style>
+
