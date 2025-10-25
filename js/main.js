@@ -240,8 +240,7 @@ function initPositionIndicator() {
                     const adjustedIndex = section.id === 'about' ? 0 : 
                                        section.id === 'work' ? 1 :
                                        section.id === 'passion' ? 2 :
-                                       section.id === 'video' ? 3 :
-                                       section.id === 'contact' ? 4 : index;
+                                       section.id === 'contact' ? 3 : index;
                     navLinks[adjustedIndex].classList.add('active');
                 }
             });
